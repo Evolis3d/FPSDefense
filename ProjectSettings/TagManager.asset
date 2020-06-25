@@ -10,6 +10,7 @@ TagManager:
   - slot
   - trampa
   - goal
+  - spawnpoint
   layers:
   - Default
   - TransparentFX

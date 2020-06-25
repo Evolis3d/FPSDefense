@@ -23,13 +23,11 @@ public class TrampaMina : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var layero = other.gameObject.layer;
-        if (layero == LayerMask.NameToLayer("Enemies") && _occupied == false)
-        {
-            AbreTrampa();
-            //var emo = other.GetComponent<Enemy>();
-            //emo.GetHit(damage);
-            _occupied = true;
-        }
+        if (layero != LayerMask.NameToLayer("Enemies") || _occupied != false) return;
+        AbreTrampa();
+        //var emo = other.GetComponent<Enemy>();
+        //emo.GetHit(damage);
+        _occupied = true;
     }
     
     private void OnDestroy()

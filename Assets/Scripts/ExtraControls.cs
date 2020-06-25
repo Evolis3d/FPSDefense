@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public enum ItemSelectionType
 {
-    abs,
-    cycle,
+    Abs,
+    Cycle,
 }
 
 public class ExtraControls : MonoBehaviour
@@ -86,7 +86,7 @@ public class ExtraControls : MonoBehaviour
             }
         }
 
-        if (itemSelectionMode == ItemSelectionType.cycle)        //ciclico
+        if (itemSelectionMode == ItemSelectionType.Cycle)        //ciclico
         {
             if (_currentTrampa > 2) _currentTrampa = 0;
             if (_currentTrampa < 0) _currentTrampa = 2;       

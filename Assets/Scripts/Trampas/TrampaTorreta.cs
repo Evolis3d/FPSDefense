@@ -44,21 +44,19 @@ public class TrampaTorreta : MonoBehaviour
         }
         else
         {
-            _currentTime += Time.deltaTime; 
-            
-            if (_currentTarget != null)
-            {
-                ApuntaTorreta(_currentTarget);
+            _currentTime += Time.deltaTime;
 
-                if (_currentFreq > frecuenciaDisparo)
-                {
-                    _currentFreq = _freqInit;
-                    ShootTorreta(_currentTarget); //disparamos un proyectil
-                }
-                else
-                {
-                    _currentFreq += Time.deltaTime;
-                }
+            if (_currentTarget == null) return;
+            ApuntaTorreta(_currentTarget);
+
+            if (_currentFreq > frecuenciaDisparo)
+            {
+                _currentFreq = _freqInit;
+                ShootTorreta(_currentTarget); //disparamos un proyectil
+            }
+            else
+            {
+                _currentFreq += Time.deltaTime;
             }
         }
     }
