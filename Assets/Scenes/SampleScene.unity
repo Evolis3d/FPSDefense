@@ -1852,14 +1852,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239036309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e047739b93f7f42b33d2742a4294c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a52ce96d41e9f49bd55bd431b2a614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipo: 0
   spawnPoints: []
-  PrefabEnemies:
+  prefabEnemies:
   - {fileID: 9184137041006555741, guid: c6d8d5033c2efbe4b8f4e770f218d62b, type: 3}
-  Cantidad: 6
-  freqEnter: 5
+  - {fileID: 0}
+  - {fileID: 0}
+  cantidad: 4
+  frecuencia: 3
 --- !u!1001 &1270715551
 PrefabInstance:
   m_ObjectHideFlags: 0
