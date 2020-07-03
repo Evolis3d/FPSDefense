@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private OleadaGenerica _oleada;
+    private WaveController _oleada;
 
     [SerializeField] private List<Transform> enemies = new List<Transform>();
     
     void Awake()
     {
-        _oleada = GetComponent<OleadaGenerica>();
+        _oleada = GetComponent<WaveController>();
     }
 
     void Start()

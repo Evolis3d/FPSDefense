@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
     //lista de oleadas de ese nivel
-    public List<Oleada> lista = new List<Oleada>();
+    public List<SO_Oleada> lista = new List<SO_Oleada>();
+    private int _totalWaves;
+    private WaveController wc;
+    
+    
     public float initialDelay;    
     public float timeBetweenWaves;
+    
     private float _currentTimer;
     private float _timeInit;
     private bool isRecess = false;
+    
     
     //eventos
     public delegate void NotifyWaveStarted(int numWave, int totalWaves);
@@ -22,13 +29,25 @@ public class WaveManager : MonoBehaviour
     public event NotifyWaveEnded WaveEnded;
     public event NotifyAllWavesEnded AllWavesEnded;
 
-    void Start()
+    private void Awake()
+    {
+        wc = GetComponent<WaveController>();
+    }
+
+    private void Start()
     {
         //si hay oleadas en la lista...
         if (lista != null && lista.Count > 0)
         {
             _currentTimer = 0;
             _timeInit = 0;
+            
+            //saco de dato la cantidad de oleadas que tiene este nivel...
+            _totalWaves = lista.Count; 
+            
+            //limpio elementos vacios de toda la lista de oleadas y preparo sus tamaños...
+            TrimNSize();
+            
             Invoke("Init", initialDelay);
         }
         else
@@ -37,7 +56,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         // usamos el timer mientras estamos en el descanso entre oleadas
         if (isRecess)
@@ -56,27 +75,42 @@ public class WaveManager : MonoBehaviour
     }
 
 
-    void Init()
+    private void Init()
     {
-        //lista[0].init();
+        //siempre trabajamos con el primer elemento de la lista de oleadas, el elemento 0
+        wc.Setup(lista[0]);
+        wc.InitWave();
+        
         WaveStarted?.Invoke(0, lista.Count);
-        lista[0].WaveEmpty += () => ClearWaveAt(0);
+        print("Oleada comenzada!");
+        wc.WaveEmpty += () => ClearWaveAt(0);
     }
 
-    
-    void ClearWaveAt(int indexWave)
+
+    private void ClearWaveAt(int indexWave)
     {
         WaveEnded?.Invoke(indexWave);
-        print("Oleada " + indexWave + "terminada." );
-        lista[indexWave].WaveEmpty -= () => ClearWaveAt(0);
+        print("Oleada " + (indexWave+1) + " de " + _totalWaves + " terminada." );
+        wc.WaveEmpty -= () => ClearWaveAt(0);
         lista.RemoveAt(indexWave);
         isRecess = true;
         ResetTimer();
     }
 
-    void ResetTimer()
+    private void ResetTimer()
     {
         _currentTimer = _timeInit;
+    }
+
+    
+    //funcion que quita los elementos vacios de cada oleada y genera su cantidad de enemigos según su tipo
+    private void TrimNSize()
+    {
+        foreach (var wave in lista)
+        {
+            wave.Trim();
+            wave.CheckQuantityFromOrder();
+        }
     }
     
 }

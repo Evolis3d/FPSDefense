@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-//script de nexo simple, la partida se pierde al entrar en su trigger
+//script de nexo simple, la partida se pierde al quitarle toda su vida..
 public class GoalHp : MonoBehaviour
 {
     public float hp;

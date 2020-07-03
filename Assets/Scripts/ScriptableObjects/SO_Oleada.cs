@@ -24,6 +24,17 @@ public class SO_Oleada : ScriptableObject
     //frecuencia de aparicion
     [Tooltip("Frecuencia de aparición en segs.")]
     public float frecuencia;
+
+    //limpia los elementos vacios de la lista de enemigos, para evitar errores...
+    public void Trim()
+    {
+        prefabEnemies.RemoveAll(x => x == null);
+    }
+
+    public void CheckQuantityFromOrder()
+    {
+        if (tipo == OleadaType.CustomOrder) cantidad = prefabEnemies.Count;
+    }
 }
 
 

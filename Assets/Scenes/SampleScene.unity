@@ -1760,6 +1760,7 @@ GameObject:
   - component: {fileID: 1239036310}
   - component: {fileID: 1239036312}
   - component: {fileID: 1239036313}
+  - component: {fileID: 1239036316}
   - component: {fileID: 1239036315}
   - component: {fileID: 1239036314}
   m_Layer: 0
@@ -1852,17 +1853,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239036309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a52ce96d41e9f49bd55bd431b2a614, type: 3}
+  m_Script: {fileID: 11500000, guid: cb0c0353d4341424aaaaeb13ab8318bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  spawnPoints: []
-  prefabEnemies:
-  - {fileID: 9184137041006555741, guid: c6d8d5033c2efbe4b8f4e770f218d62b, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  cantidad: 4
-  frecuencia: 3
+--- !u!114 &1239036316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239036309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2e649132c474144bb6206d5ec16fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lista:
+  - {fileID: 11400000, guid: 9f70da4e774d5e845ab08b81bd47bf43, type: 2}
+  - {fileID: 11400000, guid: 1c6d04b1d69132043bb65ef5123d76fd, type: 2}
+  initialDelay: 4
+  timeBetweenWaves: 5
 --- !u!1001 &1270715551
 PrefabInstance:
   m_ObjectHideFlags: 0
