@@ -6,7 +6,7 @@ by **GamaScorpio**
 
 ------
 
-**FPSDefense** es un proyecto para **<u>Unity3D v.2018 [LTS]</u>** cuyo objetivo es servir de plantilla ó prototipo, para trabajar sobre él y generar contenido. El proyecto en sí es una pequeño demo de videojuego en 1ª persona que mezcla géneros de FPS y de TowerDefense.
+**FPSDefense** es un proyecto para **<u>Unity3D v.2018 [LTS]</u>** cuyo objetivo es servir de plantilla o prototipo, para trabajar sobre él y generar contenido. El proyecto en sí es una pequeña demo de videojuego en 1ª persona que mezcla géneros de FPS y de TowerDefense.
 
 La intención es que sirva de material formativo a los alumnos, y puedan usar este proyecto para mostrar sus obras personales en un formato más práctico, a la vez que aprenden a trabajar en equipo y de una forma más profesional.
 
