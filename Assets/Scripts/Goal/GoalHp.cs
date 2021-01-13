@@ -34,6 +34,14 @@ public class GoalHp : MonoBehaviour
         {
             //un bicho ha llegado hasta el goal
             GoalReached?.Invoke(other.gameObject);
+            
+            //resto vida al Goal y mato al bicho, le daño con su total de vida
+            Enemy es = other.transform.GetComponent<Enemy>();
+            
+            GetHit(es.damage);
+            es.GetHit(es.life);
+            
+            
         }
     }
 
@@ -42,6 +50,13 @@ public class GoalHp : MonoBehaviour
         hp -= damage;
         hp = Mathf.Clamp(hp, 0, _maxHp);
         GoalHit?.Invoke(damage);
+        
+        //si no le queda vida, la destruyo y notifico
+        if (hp == 0)
+        {
+            GoalDestroyed?.Invoke();
+            print("Torre Destruida. GAME OVER");
+        }
     }
 
     public void SetHp(float amount)
@@ -62,7 +77,6 @@ public class GoalHp : MonoBehaviour
 
     public bool isDead()
     {
-        GoalDestroyed?.Invoke();
         return (hp == 0);
     }
 

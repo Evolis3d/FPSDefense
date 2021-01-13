@@ -19,6 +19,9 @@ public class WaveManager : MonoBehaviour
     private float _timeInit;
     private bool isRecess = false;
     
+    //apaño para parar el juego si la Goal es destruida (OJO! esto lo deberia ordenar el GameManager)
+    private GoalHp levelGoal;
+    
     
     //eventos
     public delegate void NotifyWaveStarted(int numWave, int totalWaves);
@@ -32,6 +35,9 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         wc = GetComponent<WaveController>();
+        
+        //recupero el GoalHP para el apaño del GameManager...
+        levelGoal = FindObjectOfType<GoalHp>();
     }
 
     private void Start()
@@ -49,6 +55,10 @@ public class WaveManager : MonoBehaviour
             TrimNSize();
             
             Invoke("Init", initialDelay);
+            
+            //subscribo al evento de que la meta ha sido destruida
+            levelGoal.GoalDestroyed += GameOver;
+
         }
         else
         {
@@ -111,6 +121,15 @@ public class WaveManager : MonoBehaviour
             wave.Trim();
             wave.CheckQuantityFromOrder();
         }
+    }
+    
+    //funcion temporal para parar el juego. OJO! Deberia ir en el GAMEMANAGER
+    public void GameOver()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        levelGoal.GoalDestroyed -= GameOver;
     }
     
 }

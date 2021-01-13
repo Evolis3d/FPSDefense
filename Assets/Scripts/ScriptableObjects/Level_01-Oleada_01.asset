@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Level_01-Oleada_01
   m_EditorClassIdentifier: 
   tipo: 1
-  prefabEnemies:
-  - {fileID: 9184137041006555741, guid: c6d8d5033c2efbe4b8f4e770f218d62b, type: 3}
-  - {fileID: 9184137041006555741, guid: c6d8d5033c2efbe4b8f4e770f218d62b, type: 3}
-  cantidad: 3
+  prefabEnemies: []
+  cantidad: 0
   frecuencia: 3
